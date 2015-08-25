@@ -10,6 +10,8 @@ var bodyParser      = require('body-parser');
 var mongo           = require('mongodb');
 var mongoose        = require('mongoose');
 
+var NotFoundError   = require('./lib/errors/NotFoundError');
+
 var app = express();
 
 // view engine setup
@@ -33,37 +35,38 @@ var api_routes = require('./routes/api');
 app.use('/', routes);
 app.use('/api/', api_routes);
 
-/// catch 404 and forwarding to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+// all other requests redirect to 404
+app.all("*", function (req, res, next) {
+    next(new NotFoundError("404"));
 });
 
-/// error handlers
+// error handler for all the applications
+app.use(function (err, req, res, next) {
 
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.json({
+    var errorType = typeof err,
+        code = 500,
+        msg = { 
             succeed: false,
-            error_code: res.status,
-            message: err.message
-        });
-    });
-}
+            code: code,
+            message: "Internal Server Error"
+        };
 
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.json({
-        succeed: false,
-        error_code: res.status,
-        message: err.message
-    });
+    switch (err.name) {
+        case "UnauthorizedError":
+        case "BadRequestError":
+        case "UnauthorizedAccessError":
+        case "NotFoundError":
+            code = err.status;
+            msg.code = code;
+            msg.message = err.name;
+            break;
+        default:
+            console.log(err.stack);
+            break;
+    }
+
+    return res.status(code).json(msg);
+
 });
 
 
