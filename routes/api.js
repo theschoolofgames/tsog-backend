@@ -1,6 +1,7 @@
-var express = require('express');
-var router = express.Router();
-var jwt    = require('jsonwebtoken');
+var express         = require('express');
+var router          = express.Router();
+var jwt             = require('jsonwebtoken');
+var passwordHash    = require('password-hash');
 
 var User   = require('../app/models/user');
 var Utils  = require('../app/utils');
@@ -34,7 +35,7 @@ router.get('/setup', function(req, res) {
     var nick = new User({ 
         email: 'nick@example.com',
         name: 'Nick Cerminara', 
-        encrypted_password: 'password',
+        encrypted_password: passwordHash.generate('password'),
     
     });
 
@@ -68,7 +69,7 @@ router.post('/login', function(req, res) {
         } else if (user) {
 
             // check if password matches
-            if (user.encrypted_password != password) {
+            if (!passwordHash.verify(password, user.encrypted_password)) {
                 res.json(Utils.buildRes(false, 'Authentication failed. Wrong password.', null));
             } else {
 
