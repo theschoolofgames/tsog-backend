@@ -58,7 +58,7 @@ app.use(function (err, req, res, next) {
         case "NotFoundError":
             code = err.status;
             msg.code = code;
-            msg.message = err.name;
+            msg.message = err.message;
             break;
         default:
             console.log(err.stack);
