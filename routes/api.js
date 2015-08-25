@@ -3,8 +3,9 @@ var router          = express.Router();
 var jwt             = require('jsonwebtoken');
 var passwordHash    = require('password-hash');
 
-var User   = require('../app/models/user');
-var Utils  = require('../app/utils');
+var User        = require('../app/models/user');
+var Utils       = require('../app/utils');
+var Constants   = require('../app/constants');
 
 function isAuthenticated(req, res, next) {
     // check header or url parameters or post parameters for token
@@ -56,8 +57,9 @@ router.get('/users', function(req, res) {
 });
 
 router.post('/login', function(req, res) {
-    var email = req.body.email;
-    var password = req.body.password;
+    var email = req.body.user_email;
+    var password = req.body.user_password;
+    var device_id = req.body.device_id
 
     User.findOne({
         email: email
@@ -76,18 +78,52 @@ router.post('/login', function(req, res) {
                 // if user is found and password is right
                 // create a token
                 var token = jwt.sign(user, process.env.TOKEN_SECRET, {
-                    expiresInMinutes: 1440 // expires in 24 hours
+                    expiresInMinutes: Constants.TOKEN_TIMEOUT // expires in 24 hours
                 });
 
                 // return the information including token as JSON
-                res.json(Utils.buildRes(true, null, {token: token}));
+                res.json(Utils.buildRes(true, null, {
+                    token: token,
+                    user_id: user._id
+                }));
             }   
         }
     });
 });
 
 router.post('/register', function(req, res) {
+    var email = req.body.user_email;
+    var password = req.body.user_password;
+    var device_id = req.body.device_id
 
+    User.findOne({
+        email: email
+    }, function(err, user) {
+        if (err) throw err;
+
+        if (user) {
+            res.json(Utils.buildRes(false, "Register failed. User exist", null));
+        } else {
+            var newUser = new User({ 
+                email: email,
+                encrypted_password: passwordHash.generate(password),
+                device_id: device_id
+            });
+
+            newUser.save(function(err) {
+                if (err) throw err;
+
+                var token = jwt.sign(newUser, process.env.TOKEN_SECRET, {
+                    expiresInMinutes: Constants.TOKEN_TIMEOUT // expires in 24 hours
+                });
+
+                res.json(Utils.buildRes(true, null, {
+                    token: token,
+                    user_id: newUser._id
+                }));
+            });
+        }
+    })
 });
 
 module.exports = router;
