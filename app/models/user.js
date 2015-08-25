@@ -9,3 +9,4 @@ module.exports = mongoose.model('User', new Schema({
     name: String,
     device_id: String 
 }));
+

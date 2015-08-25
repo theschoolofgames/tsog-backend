@@ -9,11 +9,6 @@ var mongo           = require('mongodb');
 var mongoose        = require('mongoose');
 var config          = require('./config'); // get our config file
 
-mongoose.connect(config.database); // connect to database
-
-var routes = require('./routes/index');
-var api_routes = require('./routes/api');
-
 var app = express();
 
 // view engine setup
@@ -28,12 +23,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Make our db accessible to our router
-// app.use(function(req,res,next){
-//     req.db = db;
-//     next();
-// });
+// Connect to database
+mongoose.connect(config.database); // connect to database
+app.set('superSecret', config.secret); // secret variable
 
+// Routes
+var routes = require('./routes/index');
+var api_routes = require('./routes/api');
 app.use('/', routes);
 app.use('/api/', api_routes);
 

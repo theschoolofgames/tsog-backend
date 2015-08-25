@@ -1,4 +1,4 @@
 module.exports = {
-    // 'secret': 'ilovescotchyscotch',
+    'secret': 'mbqV08ukMcOAhsJOtE98cifFwiLR9TG2',
     'database': 'mongodb://localhost/tsog'
 };
