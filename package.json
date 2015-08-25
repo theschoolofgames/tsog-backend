@@ -19,6 +19,7 @@
     "morgan": "^1.6.1",
     "password-hash": "^1.2.2",
     "redis": "^0.12.1",
+    "redis-url": "^1.2.1",
     "serve-favicon": "^2.3.0",
     "supervisor": "0.4.x"
   },
