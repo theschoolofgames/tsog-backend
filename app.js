@@ -1,3 +1,5 @@
+require('dotenv').load({path: 'tsog.env'});
+
 var express         = require('express');
 var path            = require('path');
 var favicon         = require('serve-favicon');
@@ -7,7 +9,6 @@ var bodyParser      = require('body-parser');
 // Database
 var mongo           = require('mongodb');
 var mongoose        = require('mongoose');
-var config          = require('config'); // get our config file
 
 var app = express();
 
@@ -24,7 +25,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Connect to database
-mongoose.connect(config.get('tsog.database')); // connect to database
+mongoose.connect(process.env.MONGODB_URI); // connect to database
 
 // Routes
 var routes = require('./routes/index');

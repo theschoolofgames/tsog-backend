@@ -1,6 +1,0 @@
-{
-  "tsog": {
-    "database": "mongodb://localhost/tsog",
-    "secret": "mbqV08ukMcOAhsJOtE98cifFwiLR9TG2"
-  }
-}
