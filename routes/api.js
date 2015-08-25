@@ -30,26 +30,7 @@ function isAuthenticated(req, res, next) {
     }
 };
 
-/* GET home page. */
-router.get('/setup', function(req, res) {
-    // create a sample user
-    var nick = new User({ 
-        email: 'nick@example.com',
-        name: 'Nick Cerminara', 
-        encrypted_password: passwordHash.generate('password'),
-    
-    });
-
-    // save the sample user
-    nick.save(function(err) {
-        if (err) throw err;
-
-        console.log('User saved successfully');
-        res.json({ success: true });
-    });
-});
-
-router.get('/users', isAuthenticated);
+// router.get('/users', isAuthenticated);
 router.get('/users', function(req, res) {
     User.find({}, function(err, users) {
         res.json(users);
@@ -57,12 +38,12 @@ router.get('/users', function(req, res) {
 });
 
 router.post('/login', function(req, res) {
-    var email = req.body.user_email;
+    var name = req.body.user_name;
     var password = req.body.user_password;
     var device_id = req.body.device_id
 
     User.findOne({
-        email: email
+        name: name
     }, function(err, user) {
         if (err) throw err;
 
@@ -78,7 +59,7 @@ router.post('/login', function(req, res) {
                 // if user is found and password is right
                 // create a token
                 var token = jwt.sign(user, process.env.TOKEN_SECRET, {
-                    expiresInMinutes: Constants.TOKEN_TIMEOUT // expires in 24 hours
+                    expiresInMinutes: Constants.TOKEN_TIMEOUT
                 });
 
                 // return the information including token as JSON
@@ -92,12 +73,12 @@ router.post('/login', function(req, res) {
 });
 
 router.post('/register', function(req, res) {
-    var email = req.body.user_email;
+    var name = req.body.user_name;
     var password = req.body.user_password;
     var device_id = req.body.device_id
 
     User.findOne({
-        email: email
+        name: name
     }, function(err, user) {
         if (err) throw err;
 
@@ -105,7 +86,7 @@ router.post('/register', function(req, res) {
             res.json(Utils.buildRes(false, "Register failed. User exist", null));
         } else {
             var newUser = new User({ 
-                email: email,
+                name: name,
                 encrypted_password: passwordHash.generate(password),
                 device_id: device_id
             });
@@ -114,7 +95,7 @@ router.post('/register', function(req, res) {
                 if (err) throw err;
 
                 var token = jwt.sign(newUser, process.env.TOKEN_SECRET, {
-                    expiresInMinutes: Constants.TOKEN_TIMEOUT // expires in 24 hours
+                    expiresInMinutes: Constants.TOKEN_TIMEOUT 
                 });
 
                 res.json(Utils.buildRes(true, null, {
