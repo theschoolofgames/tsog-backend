@@ -1,10 +1,10 @@
 var jwt    = require('jsonwebtoken');
-var config = require('../config');
+var config = require('config');
 var merge = require('merge');
 
 module.exports = {
     authenticate: function(token, cb) {
-        jwt.verify(token, config.secret, function (err, decoded) {
+        jwt.verify(token, config.get('tsog.secret'), function (err, decoded) {
             if (err) {
                 cb && cb(err, null);
                 return;

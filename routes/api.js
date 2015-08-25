@@ -3,7 +3,7 @@ var router = express.Router();
 var jwt    = require('jsonwebtoken');
 
 var User   = require('../app/models/user');
-var config = require('../config');
+var config = require('config');
 var Utils  = require('../app/utils');
 
 function isAuthenticated(req, res, next) {
@@ -13,7 +13,7 @@ function isAuthenticated(req, res, next) {
     // decode token
     if (token) {
         // verifies secret and checks exp
-        jwt.verify(token, config.secret, function(err, decoded) {      
+        jwt.verify(token, config.get('tsog.secret'), function(err, decoded) {      
             if (err) {
                 return res.json(Utils.buildRes(false, 'Failed to authenticate token.', null));
             } else {
@@ -75,7 +75,7 @@ router.post('/login', function(req, res) {
 
                 // if user is found and password is right
                 // create a token
-                var token = jwt.sign(user, config.secret, {
+                var token = jwt.sign(user, config.get('tsog.secret'), {
                     expiresInMinutes: 1440 // expires in 24 hours
                 });
 

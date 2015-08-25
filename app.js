@@ -7,7 +7,7 @@ var bodyParser      = require('body-parser');
 // Database
 var mongo           = require('mongodb');
 var mongoose        = require('mongoose');
-var config          = require('./config'); // get our config file
+var config          = require('config'); // get our config file
 
 var app = express();
 
@@ -24,8 +24,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Connect to database
-mongoose.connect(config.database); // connect to database
-app.set('superSecret', config.secret); // secret variable
+mongoose.connect(config.get('tsog.database')); // connect to database
 
 // Routes
 var routes = require('./routes/index');

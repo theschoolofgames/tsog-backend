@@ -1,0 +1,6 @@
+{
+  "tsog": {
+    "database": "mongodb://heroku_0dr7pj9w:@ds035703.mongolab.com:35703/heroku_0dr7pj9w",
+    "secret": "mbqV08ukMcOAhsJOtE98cifFwiLR9TG2"
+  }
+}
