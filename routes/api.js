@@ -86,4 +86,8 @@ router.post('/login', function(req, res) {
     });
 });
 
+router.post('/register', function(req, res) {
+
+});
+
 module.exports = router;

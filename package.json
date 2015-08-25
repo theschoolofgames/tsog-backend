@@ -15,11 +15,12 @@
     "mongoose": "^4.1.3",
     "monk": "^1.0.1",
     "morgan": "^1.6.1",
+    "password-hash": "^1.2.2",
     "serve-favicon": "^2.3.0"
   },
   "devDependencies": {},
   "scripts": {
-    "start": "supervisor ./bin/www",
+    "start": "node ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
