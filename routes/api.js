@@ -9,6 +9,7 @@ var User        = require('../lib/models/User');
 var UserController      = require('../lib/controllers/UserController');
 var SchoolController    = require('../lib/controllers/SchoolController');
 var GameController      = require('../lib/controllers/GameController');
+var BlobController      = require('../lib/controllers/BlobController');
 
 // router.get('/users', isAuthenticated);
 router.get('/users', function(req, res) {
@@ -26,5 +27,7 @@ router.get('/get_schools', SchoolController.getSchools);
 router.post('/select_school', Utils.verify, SchoolController.selectSchool);
 
 router.get('/games', GameController.getGames);
+
+router.get('/blob', Utils.verify, BlobController.getBlob);
 
 module.exports = router;
