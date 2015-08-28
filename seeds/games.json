@@ -1,0 +1,12 @@
+[
+    {
+        "gameName": "Alphabet",
+        "androidBundleIdentifier": "com.hub102.abc",
+        "iosBundleIdentifier": "com.hub102.abc"
+    },
+    {
+        "gameName": "XYZ",
+        "androidBundleIdentifier": "com.hub102.xyz",
+        "iosBundleIdentifier": "com.hub102.xyz"
+    }
+]

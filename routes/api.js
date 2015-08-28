@@ -8,6 +8,7 @@ var User        = require('../lib/models/User');
 
 var UserController      = require('../lib/controllers/UserController');
 var SchoolController    = require('../lib/controllers/SchoolController');
+var GameController      = require('../lib/controllers/GameController');
 
 // router.get('/users', isAuthenticated);
 router.get('/users', function(req, res) {
@@ -23,5 +24,7 @@ router.get('/me', Utils.verify, UserController.userInfo);
 
 router.get('/get_schools', SchoolController.getSchools);
 router.post('/select_school', Utils.verify, SchoolController.selectSchool);
+
+router.get('/games', GameController.getGames);
 
 module.exports = router;
