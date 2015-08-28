@@ -22,5 +22,6 @@ router.post('/logout', Utils.verify, UserController.logout);
 router.get('/me', Utils.verify, UserController.userInfo);
 
 router.get('/get_schools', SchoolController.getSchools);
+router.post('/select_school', Utils.verify, SchoolController.selectSchool);
 
 module.exports = router;
