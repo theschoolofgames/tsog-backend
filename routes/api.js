@@ -29,5 +29,6 @@ router.post('/select_school', Utils.verify, SchoolController.selectSchool);
 router.get('/games', GameController.getGames);
 
 router.get('/blob', Utils.verify, BlobController.getBlob);
+router.post('/blob', Utils.verify, BlobController.postBlob);
 
 module.exports = router;
