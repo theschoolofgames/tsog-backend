@@ -1,4 +1,5 @@
 require('dotenv').load({path: 'tsog.env'});
+require('newrelic');
 
 var express         = require('express');
 var path            = require('path');
