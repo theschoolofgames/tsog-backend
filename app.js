@@ -15,6 +15,10 @@ var NotFoundError   = require('./lib/errors/NotFoundError');
 
 var app = express();
 
+// Bug reporting
+var rollbar = require("rollbar");
+app.use(rollbar.errorHandler('6b50f202f2c5428794ff598b8ba5391c'));
+
 // view engine setup
 // app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'jade');
