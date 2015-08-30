@@ -6,10 +6,11 @@ var passwordHash    = require('password-hash');
 var Utils       = require('../lib/Utils');
 var User        = require('../lib/models/User');
 
-var UserController      = require('../lib/controllers/UserController');
-var SchoolController    = require('../lib/controllers/SchoolController');
-var GameController      = require('../lib/controllers/GameController');
-var BlobController      = require('../lib/controllers/BlobController');
+var UserController          = require('../lib/controllers/UserController');
+var SchoolController        = require('../lib/controllers/SchoolController');
+var GameController          = require('../lib/controllers/GameController');
+var BlobController          = require('../lib/controllers/BlobController');
+var UserAvatarController    = require('../lib/controllers/UserAvatarController');
 
 router.get('/users', function(req, res) {
     User.find({}, function(err, users) {
@@ -29,5 +30,7 @@ router.get('/games', GameController.getGames);
 
 router.get('/blob', Utils.verify, BlobController.getBlob);
 router.post('/blob', Utils.verify, BlobController.postBlob);
+
+router.post('/avatar_customization', Utils.verify, UserAvatarController.avatar_customization);
 
 module.exports = router;
