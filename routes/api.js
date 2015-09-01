@@ -4,6 +4,7 @@ var jwt             = require('jsonwebtoken');
 var passwordHash    = require('password-hash');
 
 var Utils       = require('../lib/Utils');
+var Token       = require('../lib/Token');
 var User        = require('../lib/models/User');
 
 var UserController          = require('../lib/controllers/UserController');
@@ -20,17 +21,17 @@ router.get('/users', function(req, res) {
 
 router.post('/login', UserController.login);
 router.post('/register', UserController.register);
-router.post('/logout', Utils.verify, UserController.logout);
-router.get('/me', Utils.verify, UserController.userInfo);
+router.post('/logout', Token.verify, UserController.logout);
+router.get('/me', Token.verify, UserController.userInfo);
 
 router.get('/schools', SchoolController.getSchools);
-router.post('/select_school', Utils.verify, SchoolController.selectSchool);
+router.post('/select_school', Token.verify, SchoolController.selectSchool);
 
 router.get('/games', GameController.getGames);
 
-router.get('/blob', Utils.verify, BlobController.getBlob);
-router.post('/blob', Utils.verify, BlobController.postBlob);
+router.get('/blob', Token.verify, BlobController.getBlob);
+router.post('/blob', Token.verify, BlobController.postBlob);
 
-router.post('/avatar_customization', Utils.verify, UserAvatarController.avatar_customization);
+router.post('/avatar_customization', Token.verify, UserAvatarController.avatar_customization);
 
 module.exports = router;
