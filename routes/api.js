@@ -23,6 +23,7 @@ router.get('/users', function(req, res) {
 
 router.get('/seed', function(req, res) {
     School.find({}, function(err, schools) {
+
         for (var i = 0; i < 100; i++) {
             var newAvatar = new UserAvatar({
                 sex: Math.floor(Math.random()*2),
@@ -33,17 +34,13 @@ router.get('/seed', function(req, res) {
                 noseId: Math.floor(Math.random()*5)
             }); 
 
-            newAvatar.save(function(err) {
-                var newUser = new User({ 
-                    password: 1,
-                    school: schools[Math.floor(Math.random() * schools.length)],
-                    avatar: newAvatar
-                });
-
-                newUser.save(function(err) {
-
-                });
+            var newUser = new User({ 
+                password: 1,
+                school: schools[Math.floor(Math.random() * schools.length)],
+                avatar: newAvatar
             });
+            newAvatar.save(function(err) {});
+            newUser.save(function(err) {});
         }
 
         res.json("OK");
