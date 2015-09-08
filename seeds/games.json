@@ -8,5 +8,10 @@
         "gameName": "XYZ",
         "androidBundleIdentifier": "com.hub102.xyz",
         "iosBundleIdentifier": "com.hub102.xyz"
+    },
+    {
+        "gameName": "123",
+        "androidBundleIdentifier": "com.hub102.123",
+        "iosBundleIdentifier": "com.hub102.123"
     }
 ]
