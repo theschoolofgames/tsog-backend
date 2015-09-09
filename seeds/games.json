@@ -5,6 +5,11 @@
         "iosBundleIdentifier": "com.hub102.abc"
     },
     {
+        "gameName": "TSOG - Alphabet",
+        "androidBundleIdentifier": "com.hub102.tsog-alphabet",
+        "iosBundleIdentifier": "com.hub102.tsog-alphabet"
+    },
+    {
         "gameName": "XYZ",
         "androidBundleIdentifier": "com.hub102.xyz",
         "iosBundleIdentifier": "com.hub102.xyz"

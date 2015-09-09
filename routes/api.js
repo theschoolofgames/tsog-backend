@@ -7,6 +7,7 @@ var Utils       = require('../lib/Utils');
 var Token       = require('../lib/Token');
 var User        = require('../lib/models/User');
 var School      = require('../lib/models/School');
+var Game        = require('../lib/models/Game');
 var UserAvatar  = require('../lib/models/UserAvatar');
 
 var UserController          = require('../lib/controllers/UserController');
@@ -23,27 +24,29 @@ router.get('/users', function(req, res) {
 
 router.get('/seed', function(req, res) {
     School.find({}, function(err, schools) {
+        Game.find({}, function(err1, games) {
+            for (var i = 0; i < 100; i++) {
+                var newAvatar = new UserAvatar({
+                    sex: Math.floor(Math.random()*2),
+                    skinId: Math.floor(Math.random()*5),
+                    hairId: Math.floor(Math.random()*5),
+                    eyeId: Math.floor(Math.random()*5),
+                    mouthId: Math.floor(Math.random()*5),
+                    noseId: Math.floor(Math.random()*5)
+                }); 
 
-        for (var i = 0; i < 100; i++) {
-            var newAvatar = new UserAvatar({
-                sex: Math.floor(Math.random()*2),
-                skinId: Math.floor(Math.random()*5),
-                hairId: Math.floor(Math.random()*5),
-                eyeId: Math.floor(Math.random()*5),
-                mouthId: Math.floor(Math.random()*5),
-                noseId: Math.floor(Math.random()*5)
-            }); 
+                var newUser = new User({ 
+                    password: 1,
+                    school: schools[Math.floor(Math.random() * schools.length)],
+                    avatar: newAvatar,
+                    games: Utils.shuffle(games).slice(0, 3)
+                });
+                newAvatar.save(function(err2) {});
+                newUser.save(function(err3) {});
+            }
 
-            var newUser = new User({ 
-                password: 1,
-                school: schools[Math.floor(Math.random() * schools.length)],
-                avatar: newAvatar
-            });
-            newAvatar.save(function(err) {});
-            newUser.save(function(err) {});
-        }
-
-        res.json("OK");
+            res.json("OK");
+        });
     });
 });
 
@@ -51,7 +54,7 @@ router.get('/seed', function(req, res) {
 // router.post('/register', UserController.register);
 // router.post('/logout', Token.verify, UserController.logout);
 // router.post('/change_password', Token.verify, UserController.changePassword);
-router.get('/me', Token.verify, UserController.userInfo);
+router.get('/me', UserController.userInfo);
 
 router.get('/schools', SchoolController.getSchools);
 router.get('/accounts', SchoolController.getAccounts);
