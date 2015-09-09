@@ -7,5 +7,4 @@ newrelic_agent.log
 .DS_Store
 
 # mongo-sync config
-/db-sync/
-mongo-sync.sh
+/db-sync/config.yml

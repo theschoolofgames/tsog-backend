@@ -1,0 +1,1 @@
+./db-sync/mongo-sync $1
