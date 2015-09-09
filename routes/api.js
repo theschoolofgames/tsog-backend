@@ -54,7 +54,7 @@ router.get('/seed', function(req, res) {
 // router.post('/register', UserController.register);
 // router.post('/logout', Token.verify, UserController.logout);
 // router.post('/change_password', Token.verify, UserController.changePassword);
-router.get('/me', UserController.userInfo);
+// router.get('/me', UserController.userInfo);
 
 router.get('/schools', SchoolController.getSchools);
 router.get('/accounts', SchoolController.getAccounts);
