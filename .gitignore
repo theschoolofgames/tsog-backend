@@ -5,3 +5,7 @@ dump.rdb
 newrelic_agent.log
 
 .DS_Store
+
+# mongo-sync config
+mongo-sync-config.yml
+mongo-sync
