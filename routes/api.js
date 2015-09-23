@@ -2,6 +2,7 @@ var express         = require('express');
 var router          = express.Router();
 var jwt             = require('jsonwebtoken');
 var passwordHash    = require('password-hash');
+var faker           = require('faker');
 
 var Utils       = require('../lib/Utils');
 var Token       = require('../lib/Token');
@@ -34,14 +35,15 @@ router.get('/seed', function(req, res) {
                     mouthId: Math.floor(Math.random()*5),
                     noseId: Math.floor(Math.random()*5)
                 }); 
+                newAvatar.save(function(err2) {});
 
                 var newUser = new User({ 
+                    username: faker.name.firstName(),
                     password: 1,
                     school: schools[Math.floor(Math.random() * schools.length)],
                     avatar: newAvatar,
                     games: Utils.shuffle(games).slice(0, 3)
                 });
-                newAvatar.save(function(err2) {});
                 newUser.save(function(err3) {});
             }
 
