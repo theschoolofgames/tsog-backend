@@ -39,7 +39,7 @@ router.get('/seed', function(req, res) {
 
                 var newUser = new User({ 
                     username: faker.name.firstName(),
-                    password: 1,
+                    password: Math.floor(Math.random() * 5 + 1),
                     school: schools[Math.floor(Math.random() * schools.length)],
                     avatar: newAvatar,
                     games: Utils.shuffle(games).slice(0, 3)
