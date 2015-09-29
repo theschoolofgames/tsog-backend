@@ -1,14 +1,29 @@
 [
-  {
-    "schoolName": "Vietnam National University"
-  },
-  {
-    "schoolName": "Vietnam University of Commerce"
-  },
-  {
-    "schoolName": "Vietnam University of Fine Arts"
-  },
-  {
-    "schoolName": "Hanoi Open University"
-  }
+    {
+        "schoolName": "Golden Sierra Grammar School"
+    },
+    {
+        "schoolName": "Lakewood College"
+    },
+    {
+        "schoolName": "Highland School for Girls"
+    },
+    {
+        "schoolName": "Grand Mountain Conservatory"
+    },
+    {
+        "schoolName": "Cypress Middle School"
+    },
+    {
+        "schoolName": "Highland Grammar School"
+    },
+    {
+        "schoolName": "Pleasant Valley College"
+    },
+    {
+        "schoolName": "Springfield College"
+    },
+    {
+        "schoolName": "Liberty Charter School"
+    }
 ]
