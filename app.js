@@ -38,7 +38,7 @@ mongoose.connect(process.env.MONGODB_URI); // connect to database
 var routes = require('./routes/index');
 var api_routes = require('./routes/api');
 app.use('/', routes);
-app.use('/api/', api_routes);
+app.use('/api', api_routes);
 
 // all other requests redirect to 404
 app.all("*", function (req, res, next) {
