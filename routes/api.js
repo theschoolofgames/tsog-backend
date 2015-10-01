@@ -16,6 +16,7 @@ var SchoolController        = require('../lib/controllers/SchoolController');
 var GameController          = require('../lib/controllers/GameController');
 var BlobController          = require('../lib/controllers/BlobController');
 var UserAvatarController    = require('../lib/controllers/UserAvatarController');
+var UserGameController      = require('../lib/controllers/UserGameController');
 
 router.get('/users', function(req, res) {
     User.find({}, function(err, users) {
@@ -64,9 +65,11 @@ router.get('/accounts', SchoolController.getAccounts);
 
 router.get('/games', GameController.getGames);
 
-router.get('/blob', Token.verify, BlobController.getBlob);
-router.post('/blob', Token.verify, BlobController.postBlob);
+// router.get('/blob', Token.verify, BlobController.getBlob);
+// router.post('/blob', Token.verify, BlobController.postBlob);
 
-router.post('/avatar_customization', Token.verify, UserAvatarController.avatar_customization);
+// router.post('/avatar_customization', Token.verify, UserAvatarController.avatar_customization);
+
+router.post('/gameProgress', UserGameController.gameProgress);
 
 module.exports = router;
