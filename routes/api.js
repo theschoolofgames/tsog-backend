@@ -64,6 +64,7 @@ router.get('/accounts', SchoolController.getAccounts);
 // router.post('/select_school', Token.verify, SchoolController.selectSchool);
 
 router.get('/games', GameController.getGames);
+router.get('/game', GameController.getGame);
 
 // router.get('/blob', Token.verify, BlobController.getBlob);
 // router.post('/blob', Token.verify, BlobController.postBlob);
