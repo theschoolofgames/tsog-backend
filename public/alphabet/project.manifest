@@ -1,0 +1,35 @@
+{
+    "packageUrl" : "http://localhost:3000/alphabet/",
+    "remoteVersionUrl" : "http://localhost:3000/alphabet/version.manifest",
+    "remoteManifestUrl" : "http://localhost:3000/alphabet/project.manifest",
+    "version" : "1.0.0",
+    "engineVersion" : "cocos2d-x-3.7.1",
+
+    "assets" : {
+        "HD/animals/bear.png" : {
+            "md5" : "23aeca07dbeeafa3270fa20b8d011cac"
+        },
+        "HD/animals/bird.png" : {
+            "md5" : "96edab6481800e6c51507389bc42dd6c"
+        },
+        "HD/animals/cat.png" : {
+            "md5" : "4e6814fc7106aa4c17f63315667cc890"
+        },
+        "HD/things/banana.png" : {
+            "md5" : "3301897ba08a40e17e8246d2f7e69ea6"
+        },
+        "HD/things/book.png" : {
+            "md5" : "b83c3e09525ac2c6f52c39630adb7552"
+        },
+        "HD/things/chair.png" : {
+            "md5" : "a38be4f72c758f8ff9c0fc6bf74d279b"
+        },
+        "HD/things/colored-pencils.png" : {
+            "md5" : "fa0181ad34592149ec1fac459419ea7e"
+        }
+    },
+
+    "searchPaths" : [
+        "res/"
+    ]
+}
