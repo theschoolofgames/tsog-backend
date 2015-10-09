@@ -36,9 +36,9 @@ host = ARGV[1] || "http://localhost:3000"
 
 config.each do |c|
     projectData = {
-        :packageUrl => "http://localhost:3000/" + c[:uri],
-        :remoteVersionUrl => "http://localhost:3000/" + c[:uri] + "version.manifest",
-        :remoteManifestUrl => "http://localhost:3000/" + c[:uri] + "project.manifest",
+        :packageUrl => host + "/" + c[:uri],
+        :remoteVersionUrl => host + "/" + c[:uri] + "version.manifest",
+        :remoteManifestUrl => host + "/" + c[:uri] + "project.manifest",
         :version => version,
         :engineVersion => "cocos2d-x-3.7.1"
     }
