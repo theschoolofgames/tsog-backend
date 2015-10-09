@@ -1,7 +1,0 @@
-{
-    "packageUrl" : "http://localhost:3000/alphabet",
-    "remoteVersionUrl" : "http://localhost:3000/alphabet/version.manifest",
-    "remoteManifestUrl" : "http://localhost:3000/alphabet/project.manifest",
-    "version" : "1.0.0",
-    "engineVersion" : "cocos2d-x-3.7.1"
-}
