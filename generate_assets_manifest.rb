@@ -44,7 +44,7 @@ config.each do |c|
     }
     Dir.mkdir(c[:dest]) unless File.exists?(c[:dest])
     File.open(c[:dest] + "version.manifest","w") do |f|
-        f.write(projectData.to_json);
+        f.write(projectData.to_json)
     end
 
     assets = []
@@ -67,6 +67,7 @@ config.each do |c|
     projectData[:searchPaths] = c[:searchPaths]
 
     File.open(c[:dest] + "project.manifest","w") do |f|
-        f.write(JSON.pretty_generate(projectData));
+        # f.write(JSON.pretty_generate(projectData));
+        f.write(projectData.to_json)
     end
 end
