@@ -47,18 +47,16 @@ config.each do |c|
         f.write(projectData.to_json)
     end
 
-    assets = []
+    assets = {}
     c[:folders].each do |folder|
         files = Dir[c[:source] + folder + "/*"]
         files.each do |f|
             md5Hash = Digest::MD5.hexdigest File.read f
             fileName = f.gsub(c[:source], "")
 
-            assets.push({
-                fileName => {
-                    :md5 => md5Hash
+            assets[fileName] = {
+                    md5: md5Hash
                 }
-            })
         end
         FileUtils.cp_r (c[:source] + folder), c[:dest]
     end
