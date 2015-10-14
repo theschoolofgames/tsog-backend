@@ -8,7 +8,7 @@ config = [
     {
         :source => "../tsog-alphabet/res/HD/",
         :dest => "public/alphabet/HD/",
-        :uri => "alphabet/HD/",
+        :uri => "alphabet/HD",
         :folders => [
             "animals",
             "things",
@@ -24,7 +24,7 @@ config = [
     {
         :source => "../tsog-alphabet/res/SD/",
         :dest => "public/alphabet/SD/",
-        :uri => "alphabet/SD/",
+        :uri => "alphabet/SD",
         :folders => [
             "animals",
             "things",
