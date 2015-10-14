@@ -1,0 +1,10 @@
+{
+    "needTouchToHideCutScene": false,
+    "objectStartCount": 3,
+    "amountOfObjectBaseOnPlay": {
+        "base": 2,
+        "increase": 1
+    },
+    "requireObjectsToHideAllShadow": 6,
+    "levelTime": 120
+}

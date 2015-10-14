@@ -1,1 +1,1 @@
-{"packageUrl":"http://tsog.herokuapp.com//alphabet/SD/","remoteVersionUrl":"http://tsog.herokuapp.com//alphabet/SD/version.manifest","remoteManifestUrl":"http://tsog.herokuapp.com//alphabet/SD/project.manifest","version":"1.0.0","engineVersion":"cocos2d-x-3.7.1"}
+{"packageUrl":"http://localhost:3000/alphabet/SD/","remoteVersionUrl":"http://localhost:3000/alphabet/SD/version.manifest","remoteManifestUrl":"http://localhost:3000/alphabet/SD/project.manifest","version":"1.0.0","engineVersion":"cocos2d-x-3.7.1"}

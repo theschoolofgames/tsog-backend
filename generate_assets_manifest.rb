@@ -11,7 +11,11 @@ config = [
         :uri => "alphabet/HD/",
         :folders => [
             "animals",
-            "things"
+            "things",
+            "../sounds/animals",
+            "../sounds/things",
+            "../sounds",
+            "../config"
         ],
         :searchPaths => [
             "res/HD"
@@ -23,7 +27,11 @@ config = [
         :uri => "alphabet/SD/",
         :folders => [
             "animals",
-            "things"
+            "things",
+            "../sounds/animals",
+            "../sounds/things",
+            "../sounds",
+            "../config"
         ],
         :searchPaths => [
             "res/SD"
@@ -42,7 +50,7 @@ config.each do |c|
         :version => version,
         :engineVersion => "cocos2d-x-3.7.1"
     }
-    Dir.mkdir(c[:dest]) unless File.exists?(c[:dest])
+    FileUtils.mkdir_p c[:dest] unless File.exists? c[:dest]
     File.open(c[:dest] + "version.manifest","w") do |f|
         f.write(projectData.to_json)
     end
@@ -51,14 +59,18 @@ config.each do |c|
     c[:folders].each do |folder|
         files = Dir[c[:source] + folder + "/*"]
         files.each do |f|
+            next if File.directory?(f)
+
             md5Hash = Digest::MD5.hexdigest File.read f
-            fileName = f.gsub(c[:source], "")
+            fileName = f.gsub(c[:source], "").gsub("../", "")
 
             assets[fileName] = {
                     md5: md5Hash
                 }
         end
-        FileUtils.cp_r (c[:source] + folder), c[:dest]
+        destPath = c[:dest] + folder.gsub("../", "")
+        FileUtils.mkdir_p destPath unless File.exists? destPath
+        FileUtils.cp_r (c[:source] + folder + "/."), destPath
     end
 
     projectData[:assets] = assets
