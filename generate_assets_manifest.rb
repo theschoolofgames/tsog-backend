@@ -12,9 +12,9 @@ config = [
         :folders => [
             "animals",
             "things",
+            "../sounds",
             "../sounds/animals",
             "../sounds/things",
-            "../sounds",
             "../config"
         ],
         :searchPaths => [
@@ -28,9 +28,9 @@ config = [
         :folders => [
             "animals",
             "things",
+            "../sounds",
             "../sounds/animals",
             "../sounds/things",
-            "../sounds",
             "../config"
         ],
         :searchPaths => [
