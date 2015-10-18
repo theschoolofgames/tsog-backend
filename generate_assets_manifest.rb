@@ -7,8 +7,8 @@ require 'digest'
 config = [
     {
         :source => "../tsog-alphabet/res/HD/",
-        :dest => "public/alphabet/HD/",
-        :uri => "alphabet/HD",
+        :dest => "public/games/alphabet/HD/",
+        :uri => "games/alphabet/HD/",
         :folders => [
             "animals",
             "things",
@@ -23,8 +23,8 @@ config = [
     },
     {
         :source => "../tsog-alphabet/res/SD/",
-        :dest => "public/alphabet/SD/",
-        :uri => "alphabet/SD",
+        :dest => "public/games/alphabet/SD/",
+        :uri => "games/alphabet/SD/",
         :folders => [
             "animals",
             "things",
