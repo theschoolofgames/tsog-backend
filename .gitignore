@@ -32,3 +32,4 @@ node_modules
 
 # mongo-sync config
 /db-sync/config.yml
+remoteDBSync.js
