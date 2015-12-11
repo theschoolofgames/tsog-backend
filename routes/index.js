@@ -50,6 +50,7 @@ exports = module.exports = function(app) {
     app.use('/api/seed', routes.seed.seed);
 
     app.get('/api/schools', routes.controllers.SchoolController.getSchools);
+    app.post('/api/schools', routes.controllers.SchoolController.createSchool);
     app.get('/api/accounts', routes.controllers.SchoolController.getAccounts);
     app.get('/api/games', routes.controllers.GameController.getGames);
 
