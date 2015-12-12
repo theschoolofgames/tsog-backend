@@ -47,12 +47,13 @@ exports = module.exports = function(app) {
 	
 	// Views
 	app.get('/', routes.views.index);
-    app.use('/api/seed', routes.seed.seed);
+    // app.use('/api/seed', routes.seed.seed);
 
     app.get('/api/schools', routes.controllers.SchoolController.getSchools);
     app.post('/api/schools', routes.controllers.SchoolController.createSchool);
     app.get('/api/accounts', routes.controllers.SchoolController.getAccounts);
     app.get('/api/games', routes.controllers.GameController.getGames);
+    app.post('/api/students', routes.controllers.StudentController.createStudent);
 
     app.post('/api/gameProgress', routes.controllers.StudentGameController.gameProgress);
 	
