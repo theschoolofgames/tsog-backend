@@ -53,6 +53,7 @@ exports = module.exports = function(app) {
     app.post('/api/schools', routes.controllers.SchoolController.createSchool);
     app.get('/api/accounts', routes.controllers.SchoolController.getAccounts);
     app.get('/api/games', routes.controllers.GameController.getGames);
+    app.get('/api/game', routes.controllers.GameController.getGame);
     app.post('/api/students', routes.controllers.StudentController.createStudent);
 
     app.post('/api/gameProgress', routes.controllers.StudentGameController.gameProgress);

@@ -6,7 +6,7 @@ require 'digest'
 
 config = [
     {
-        :source => "../tsog-alphabet/res/HD/",
+        :source => "../tsog-main-app/res/HD/",
         :dest => "public/games/alphabet/HD/",
         :uri => "games/alphabet/HD/",
         :folders => [
@@ -22,7 +22,7 @@ config = [
         ]
     },
     {
-        :source => "../tsog-alphabet/res/SD/",
+        :source => "../tsog-main-app/res/SD/",
         :dest => "public/games/alphabet/SD/",
         :uri => "games/alphabet/SD/",
         :folders => [
@@ -54,6 +54,8 @@ config.each do |c|
     File.open(c[:dest] + "version.manifest","w") do |f|
         f.write(projectData.to_json)
     end
+
+    FileUtils.cp (c[:dest] + "version.manifest"), (c[:source] + "project.manifest")
 
     assets = {}
     c[:folders].each do |folder|
