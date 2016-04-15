@@ -1,0 +1,29 @@
+{
+    "listeningTestTime": 120,
+    "listeningTestWaitToShowHand": 10,
+    "listeningTestWaitToShowNextObj": 20,
+
+    "writingTestIncludedCoverPercentage": 80,
+    "writingTestExcludedCoverPercentage": 40,
+
+    "androidVersionName": "1.0",
+    "androidForceUpdate": true,
+    "iosVersionName": "1.0",
+    "iosForceUpdate": false,
+
+    "sceneFlow": {
+        "preLoopScreens": [
+
+        ],
+        "loopScreens": [
+            "RoomScene",
+            "SpeakingTestScene",
+            "ListeningTestScene",
+            "WritingTestScene",
+            "ForestScene",
+            "SpeakingTestScene",
+            "ListeningTestScene",
+            "WritingTestScene"
+        ]
+    }
+}

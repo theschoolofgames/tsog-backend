@@ -6,22 +6,6 @@ require 'digest'
 
 config = [
     {
-        :source => "../tsog-main-app/res/HD/",
-        :dest => "public/games/alphabet/HD/",
-        :uri => "games/alphabet/HD/",
-        :folders => [
-            "animals",
-            "things",
-            "../sounds",
-            "../sounds/animals",
-            "../sounds/things",
-            "../config"
-        ],
-        :searchPaths => [
-            "res/HD"
-        ]
-    },
-    {
         :source => "../tsog-main-app/res/SD/",
         :dest => "public/games/alphabet/SD/",
         :uri => "games/alphabet/SD/",

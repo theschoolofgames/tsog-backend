@@ -1,0 +1,42 @@
+{
+    "needTouchToHideCutScene": false,
+    "objectStartCount": 3,
+    "amountOfObjectBaseOnPlay": {
+        "base": 2,
+        "increase": 1
+    },
+    "requireObjectsToHideAllShadow": 6,
+    "levelTime": 120,
+    "talkingAdiTime": 120,    
+    "timeToPauseGame": 900,
+    "timeToResumeGame": 120,
+    "amountOfPlay": 4,
+
+    "androidVersionName": "1.0",
+    "androidForceUpdate": false,
+    "iosVersionName": "1.0",
+    "iosForceUpdate": false,
+    
+    "listeningTestTime": 120,
+    "listeningTestWaitToShowHand": 10,
+    "listeningTestWaitToShowNextObj": 20,
+
+    "writingTestIncludedCoverPercentage": 80,
+    "writingTestExcludedCoverPercentage": 40,
+
+    "sceneFlow": {
+        "preLoopScreens": [
+
+        ],
+        "loopScreens": [
+            "RoomScene",
+            "SpeakingTestScene",
+            "ListeningTestScene",
+            "WritingTestScene",
+            "ForestScene",
+            "SpeakingTestScene",
+            "ListeningTestScene",
+            "WritingTestScene"
+        ]
+    }
+}
