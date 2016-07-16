@@ -21,12 +21,8 @@
 var keystone = require('keystone');
 var middleware = require('./middleware');
 var importRoutes = keystone.importer(__dirname);
-var passport = require('passport');
-var Strategy = require('passport-http-bearer').Strategy;
 
 var NotFoundError   = require('../lib/errors/NotFoundError');
-
-var User      = keystone.list('User');
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
@@ -47,6 +43,7 @@ exports = module.exports = function(app) {
     // app.use('/api/seed', routes.seed.seed);
 
     app.post('/api/register', routes.controllers.UserController.register);
+    app.post('/api/login', routes.controllers.UserController.login);
 
     app.get('/api/schools', routes.controllers.SchoolController.getSchools);
     app.post('/api/schools', routes.controllers.SchoolController.createSchool);
@@ -78,7 +75,6 @@ exports = module.exports = function(app) {
             };
 
         switch (err.name) {
-            case "UnauthorizedError":
             case "BadRequestError":
             case "UnauthorizedAccessError":
             case "NotFoundError":
@@ -94,13 +90,3 @@ exports = module.exports = function(app) {
         return res.status(code).json(msg);
     });
 };
-
-passport.use(new Strategy(
-    function(token, cb) {
-        User.model.findOne().where('token', token).exec(function(err, user) {
-            if (err) { return cb(err); }
-            if (!user) { return cb(null, false); }
-            return cb(null, user);
-        });
-    }
-));
