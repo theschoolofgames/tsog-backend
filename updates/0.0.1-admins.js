@@ -8,7 +8,7 @@
  */
 
 exports.create = {
-	User: [
+	Admin: [
 		{ 'name.first': 'Admin', 'name.last': 'User', email: 'admin@tsog.org', password: '12345678', isAdmin: true }
 	]
 };

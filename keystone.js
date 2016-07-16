@@ -25,7 +25,7 @@ keystone.init({
 	'auto update': true,
 	'session': true,
 	'auth': true,
-	'user model': 'User'
+	'user model': 'Admin'
 
 });
 
@@ -88,7 +88,7 @@ keystone.set('email tests', require('./routes/emails'));
 // Configure the navigation bar in Keystone's Admin UI
 
 keystone.set('nav', {
-	'Admin': 'users',
+	'Admin': 'admins',
 	'TSOG': ['students', 'games', 'schools', 'student-avatars', 'student-games']
 	// 'games': 'games',
 	// 'schools': 'schools',

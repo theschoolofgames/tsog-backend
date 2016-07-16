@@ -21,8 +21,12 @@
 var keystone = require('keystone');
 var middleware = require('./middleware');
 var importRoutes = keystone.importer(__dirname);
+var passport = require('passport');
+var Strategy = require('passport-http-bearer').Strategy;
 
 var NotFoundError   = require('../lib/errors/NotFoundError');
+
+var User      = keystone.list('User');
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
@@ -38,16 +42,11 @@ var routes = {
 // Setup Route Bindings
 exports = module.exports = function(app) {
 
-    // Bug reporting
-    var rollbar = require("rollbar");
-    app.use(rollbar.errorHandler('6b50f202f2c5428794ff598b8ba5391c'));
-
-    // New Relic
-    require('../newrelic');
-	
 	// Views
 	app.get('/', routes.views.index);
     // app.use('/api/seed', routes.seed.seed);
+
+    app.post('/api/register', routes.controllers.UserController.register);
 
     app.get('/api/schools', routes.controllers.SchoolController.getSchools);
     app.post('/api/schools', routes.controllers.SchoolController.createSchool);
@@ -64,7 +63,7 @@ exports = module.exports = function(app) {
 
     // all other requests redirect to 404
     app.all("*", function (req, res, next) {
-        next(new NotFoundError("404"));
+        next(new NotFoundError());
     });
 
     // error handler for all the applications
@@ -93,7 +92,15 @@ exports = module.exports = function(app) {
         }
 
         return res.status(code).json(msg);
-
     });
-	
 };
+
+passport.use(new Strategy(
+    function(token, cb) {
+        User.model.findOne().where('token', token).exec(function(err, user) {
+            if (err) { return cb(err); }
+            if (!user) { return cb(null, false); }
+            return cb(null, user);
+        });
+    }
+));
