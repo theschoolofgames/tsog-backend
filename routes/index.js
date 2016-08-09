@@ -53,6 +53,8 @@ exports = module.exports = function(app) {
     app.post('/api/students', routes.controllers.StudentController.createStudent);
 
     app.post('/api/gameProgress', routes.controllers.StudentGameController.gameProgress);
+
+    app.get('/api/students', routes.controllers.UserController.getStudents);
 	
 	
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
