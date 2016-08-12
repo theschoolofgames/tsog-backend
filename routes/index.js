@@ -44,6 +44,7 @@ exports = module.exports = function(app) {
 
     app.post('/api/register', routes.controllers.UserController.register);
     app.post('/api/login', routes.controllers.UserController.login);
+    app.get('/api/user', routes.controllers.UserController.getUserInfo);
 
     app.get('/api/schools', routes.controllers.SchoolController.getSchools);
     app.post('/api/schools', routes.controllers.SchoolController.createSchool);
